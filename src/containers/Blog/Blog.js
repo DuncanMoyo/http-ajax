@@ -11,8 +11,9 @@ class Blog extends Component {
     selectedPostId: null,
   };
 
-  componentDidMount() {
+  componentDidMount () {
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+      
       const posts = response.data.slice(0, 3);
       const updatedPosts = posts.map((post) => {
         return {
@@ -21,6 +22,8 @@ class Blog extends Component {
         };
       });
       this.setState({ posts: updatedPosts });
+      console.log(response);
+      
     });
   }
 
