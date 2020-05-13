@@ -16,7 +16,7 @@ class FullPost extends Component {
         axios
           .get("https://jsonplaceholder.typicode.com/posts/" + this.props.id)
           .then((response) => {
-            console.log(response);
+            // console.log(response);
             this.setState({ loadedPost: response.data });
           });
       }
