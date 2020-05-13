@@ -6,6 +6,10 @@ import NewPost from "../../components/NewPost/NewPost";
 // import axios from "axios";
 import axios from '../../axios'
 
+const url = 'https://api.imgur.com/3/gallery/hot/viral/1?showViral=true';
+
+const clientId = '130410711';
+
 class Blog extends Component {
   state = {
     posts: [],
@@ -14,6 +18,9 @@ class Blog extends Component {
   };
 
   componentDidMount () {
+
+    this.doStuff();
+
     axios.get("/posts").then((response) => {
       
       const posts = response.data.slice(0, 3);
@@ -30,6 +37,12 @@ class Blog extends Component {
       // console.log(error);
       this.setState({error: true})
     });
+  }
+
+  doStuff = async() => {
+    const apiResponse = await fetch(url).then(response => response.json());
+    console.log(apiResponse);
+    
   }
 
   postSelectedHandler = (id) => {
